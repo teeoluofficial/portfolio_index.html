@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temitope Oludare — Product Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1B2A4A;
+    --navy-light: #2D4270;
+    --accent: #2563EB;
+    --accent-light: #DBEAFE;
+    --green: #16A34A;
+    --green-light: #DCFCE7;
+    --purple: #7C3AED;
+    --purple-light: #EDE9FE;
+    --amber: #D97706;
+    --amber-light: #FEF3C7;
+    --gray-50: #F8FAFC;
+    --gray-100: #F1F5F9;
+    --gray-200: #E2E8F0;
+    --gray-400: #94A3B8;
+    --gray-600: #475569;
+    --gray-800: #1E293B;
+    --text: #0F172A;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 5%;
+    background: rgba(255,255,255,0.95);
+    border-bottom: 1px solid var(--gray-200);
+    backdrop-filter: blur(8px);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.875rem; font-weight: 500; color: var(--gray-600); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--navy); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 7rem 5% 5rem;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -30%; right: -10%;
+    width: 600px; height: 600px;
+    background: var(--accent);
+    opacity: 0.08;
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -20%; left: -5%;
+    width: 400px; height: 400px;
+    background: var(--accent);
+    opacity: 0.05;
+    border-radius: 50%;
+  }
+  .hero-inner { max-width: 800px; position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(37, 99, 235, 0.2);
+    color: #93C5FD;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { color: #93C5FD; font-style: italic; }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+  .pill {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.8rem; font-weight: 500;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 600; font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-primary:hover { background: #1D4ED8; transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 500; font-size: 0.9rem;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.05); }
+
+  /* SECTIONS */
+  section { padding: 6rem 5%; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-sub { font-size: 1rem; color: var(--gray-600); max-width: 540px; line-height: 1.8; }
+
+  /* ABOUT */
+  #about { background: var(--gray-50); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .about-text p { color: var(--gray-600); line-height: 1.9; margin-bottom: 1.2rem; font-size: 0.95rem; }
+  .about-text p strong { color: var(--navy); font-weight: 600; }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--gray-600); font-weight: 500; }
+  .about-journey {
+    grid-column: 1 / -1;
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 2.5rem;
+    color: var(--white);
+  }
+  .journey-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin-bottom: 1rem; }
+  .journey-steps { display: flex; gap: 0; flex-wrap: wrap; }
+  .journey-step {
+    flex: 1; min-width: 160px;
+    padding: 1rem 1.25rem;
+    position: relative;
+  }
+  .journey-step::after {
+    content: '→';
+    position: absolute; right: -0.3rem; top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.3);
+    font-size: 1.2rem;
+  }
+  .journey-step:last-child::after { display: none; }
+  .step-year { font-size: 0.7rem; color: #93C5FD; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .step-title { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
+  .step-desc { font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+
+  /* PROJECTS */
+  #projects { background: var(--white); }
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+
+  .project-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+
+  .card-header {
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-header.floww { background: linear-gradient(135deg, #1B2A4A 0%, #2D4270 100%); }
+  .card-header.calmi { background: linear-gradient(135deg, #4C1D95 0%, #6D28D9 100%); }
+
+  .card-tag {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.3rem 0.7rem; border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+  .floww .card-tag { background: rgba(37,99,235,0.3); color: #93C5FD; }
+  .calmi .card-tag { background: rgba(167,139,250,0.3); color: #DDD6FE; }
+
+  .card-product-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .card-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
+
+  .card-body { padding: 1.75rem; background: var(--white); }
+  .card-body p { font-size: 0.88rem; color: var(--gray-600); line-height: 1.8; margin-bottom: 1.25rem; }
+
+  .card-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.25rem; }
+  .metric { background: var(--gray-50); border-radius: 8px; padding: 0.75rem; text-align: center; }
+  .metric-val { font-size: 0.95rem; font-weight: 600; color: var(--navy); }
+  .metric-label { font-size: 0.7rem; color: var(--gray-400); margin-top: 0.2rem; }
+
+  .card-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .chip {
+    font-size: 0.72rem; font-weight: 500;
+    padding: 0.25rem 0.65rem; border-radius: 100px;
+  }
+  .chip.blue { background: var(--accent-light); color: #1D4ED8; }
+  .chip.purple { background: var(--purple-light); color: var(--purple); }
+  .chip.green { background: var(--green-light); color: var(--green); }
+
+  /* EXPERIENCE */
+  #experience { background: var(--gray-50); }
+  .exp-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 1.5rem; }
+  .exp-item {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 1.75rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+  }
+  .exp-role { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.2rem; }
+  .exp-company { font-size: 0.875rem; color: var(--accent); font-weight: 500; margin-bottom: 0.75rem; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .exp-bullets li { font-size: 0.85rem; color: var(--gray-600); padding-left: 1.1rem; position: relative; }
+  .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--gray-400); }
+  .exp-date { font-size: 0.8rem; color: var(--gray-400); font-weight: 500; white-space: nowrap; margin-top: 0.25rem; }
+  .exp-skills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; }
+  .exp-skill {
+    font-size: 0.7rem; background: var(--gray-100);
+    color: var(--gray-600); padding: 0.2rem 0.55rem;
+    border-radius: 4px; font-weight: 500;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--white); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .skill-group {
+    background: var(--gray-50);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .skill-group-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .skill-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .skill-item { font-size: 0.85rem; color: var(--gray-600); }
+  .skill-item.top { color: var(--navy); font-weight: 500; }
+
+  /* CONTACT */
+  #contact { background: var(--navy); }
+  #contact .section-label { color: #93C5FD; }
+  #contact .section-title { color: var(--white); }
+  #contact .section-sub { color: rgba(255,255,255,0.65); }
+  .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.9);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.875rem; font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.18); }
+
+  /* FOOTER */
+  footer { background: #0F1A2E; padding: 2rem 5%; text-align: center; }
+  footer p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .about-grid, .projects-grid, .skills-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; }
+    .journey-steps { flex-direction: column; }
+    .journey-step::after { display: none; }
+    .hero h1 { font-size: 2.2rem; }
+    nav { padding: 1rem 4%; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Temitope O.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">Product Manager · Lagos, Nigeria</span>
+    <h1>I turn ideas into products<br>people <em>actually</em> adopt.</h1>
+    <p class="hero-sub">7+ years in marketing. Now building products. I sit where strategy, user insight, and execution meet — and I think about adoption from day one, not as an afterthought.</p>
+    <div class="hero-pills">
+      <span class="pill">Fintech</span>
+      <span class="pill">Consumer Apps</span>
+      <span class="pill">GTM Strategy</span>
+      <span class="pill">User Research</span>
+      <span class="pill">Agile</span>
+      <span class="pill">MoSCoW</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">The marketing brain<br>behind the product</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I spent 7 years in marketing figuring out why people respond to some products and ignore others. That question — why do some things stick and others don't — eventually pulled me into product management.</p>
+        <p>My background spans <strong>brand strategy, integrated campaigns, content, growth, and media planning</strong> across agency and client-side work. I've run campaigns for VISA, Samsung, and Novartis. I've led the full marketing function for an FMCG brand. I've watched products succeed and fail based on whether they met users where they actually were.</p>
+        <p>Now I channel that into product. I'm currently in the BeTechified PM Bootcamp, where I built out two products from scratch — <strong>Floww</strong>, a fintech platform for Nigeria's informal economy, and <strong>Calmi</strong>, a mental wellness app for users who don't yet know they need support.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">7+</div>
+          <div class="stat-label">Years in marketing & strategy</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2</div>
+          <div class="stat-label">PM products built from scratch</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">39M+</div>
+          <div class="stat-label">Target users for Floww</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Delivery channels designed</div>
+        </div>
+      </div>
+      <div class="about-journey">
+        <div class="journey-title">The journey so far</div>
+        <div class="journey-steps">
+          <div class="journey-step">
+            <div class="step-year">2018–2021</div>
+            <div class="step-title">Media Strategist</div>
+            <div class="step-desc">VISA, Samsung, Novartis</div>
+          </div>
+          <div class="journey-step">
+            <div class="step-year">2021–2022</div>
+            <div class="step-title">Content Strategist</div>
+            <div class="step-desc">Freelance, brand strategy</div>
+          </div>
+          <div class="journey-step">
+            <div class="step-year">2022–2026</div>
+            <div class="step-title">Marketing Head</div>
+            <div class="step-desc">Daraju Industries</div>
+          </div>
+          <div class="journey-step">
+            <div class="step-year">2026→</div>
+            <div class="step-title">Product Manager</div>
+            <div class="step-desc">BeTechified Bootcamp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label">Product Portfolio</p>
+    <h2 class="section-title">Products I've built</h2>
+    <p class="section-sub">Both products were built through the BeTechified PM Bootcamp — from problem discovery to full PRD. Real process. Real decisions. Real frameworks.</p>
+    <div class="projects-grid">
+
+      <!-- FLOWW -->
+      <div class="project-card">
+        <div class="card-header floww">
+          <span class="card-tag">Fintech · MVP</span>
+          <div class="card-product-name">Floww</div>
+          <div class="card-tagline">Manage your irregular income</div>
+        </div>
+        <div class="card-body">
+          <p>Nigeria has 39M+ gig workers, traders, and freelancers. Every existing personal finance tool assumes a monthly salary — making them irrelevant from the first screen. Floww was built for the people those tools ignore, delivered inside WhatsApp, OPay, and USSD — no new app required.</p>
+          <div class="card-metrics">
+            <div class="metric">
+              <div class="metric-val">10K</div>
+              <div class="metric-label">MAU target · Mo.6</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">40%+</div>
+              <div class="metric-label">30-day retention</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">3</div>
+              <div class="metric-label">Delivery channels</div>
+            </div>
+          </div>
+          <div class="card-chips">
+            <span class="chip blue">Product Strategy</span>
+            <span class="chip blue">User Research</span>
+            <span class="chip blue">PRD</span>
+            <span class="chip green">Fintech</span>
+            <span class="chip green">GTM</span>
+            <span class="chip blue">MoSCoW</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALMI -->
+      <div class="project-card">
+        <div class="card-header calmi">
+          <span class="card-tag">Health &amp; Wellness · MVP</span>
+          <div class="card-product-name">Calmi</div>
+          <div class="card-tagline">Mental wellness before you know you need it</div>
+        </div>
+        <div class="card-body">
+          <p>Every mental wellness platform assumes users are already ready to seek help. Calmi was built for the stage before that — for the person who's struggling but hasn't named it yet. Anonymous onboarding, culturally framed self-checks, free coping tools, and in-app therapist booking.</p>
+          <div class="card-metrics">
+            <div class="metric">
+              <div class="metric-val">10K</div>
+              <div class="metric-label">MAU target · Mo.6</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">50+</div>
+              <div class="metric-label">Specialists · Mo.3</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">4</div>
+              <div class="metric-label">Barriers removed</div>
+            </div>
+          </div>
+          <div class="card-chips">
+            <span class="chip purple">Mental Wellness</span>
+            <span class="chip purple">Freemium</span>
+            <span class="chip purple">PRD</span>
+            <span class="chip green">B2B + B2C</span>
+            <span class="chip purple">User Personas</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">Work Experience</p>
+    <h2 class="section-title">Where I've been</h2>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">Product Manager</div>
+          <div class="exp-company">BeTechified · Bootcamp Programme</div>
+          <ul class="exp-bullets">
+            <li>Led product discovery and full PRD for Floww — multi-channel fintech for 39M+ irregular income earners</li>
+            <li>Defined vision, personas, and GTM strategy for Calmi — mental wellness app targeting pre-awareness users</li>
+            <li>Applied Agile sprints, MoSCoW prioritisation, Jobs-to-be-Done, and user story mapping across both products</li>
+            <li>Designed Floww's 3-channel delivery (WhatsApp, OPay Mini-App, USSD) to eliminate adoption friction</li>
+          </ul>
+          <div class="exp-skills">
+            <span class="exp-skill">Product Management</span><span class="exp-skill">Product Strategy</span>
+            <span class="exp-skill">Agile</span><span class="exp-skill">MoSCoW</span>
+            <span class="exp-skill">User Research</span><span class="exp-skill">PRD Development</span>
+            <span class="exp-skill">GTM Strategy</span><span class="exp-skill">Roadmap Planning</span>
+          </div>
+        </div>
+        <div class="exp-date">Apr 2026 – Present</div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">Marketing Head</div>
+          <div class="exp-company">Daraju Industries Ltd · Hybrid, Nigeria</div>
+          <ul class="exp-bullets">
+            <li>Led full marketing function — brand strategy, product relaunches, trade activations, and integrated comms</li>
+            <li>Directed brand and packaging rebrands across multiple FMCG product lines</li>
+            <li>Managed budget and channel mix across digital, OOH, and experiential to optimise ROI</li>
+            <li>Conducted market and competitor research to guide positioning and growth strategy</li>
+          </ul>
+          <div class="exp-skills">
+            <span class="exp-skill">Brand Strategy</span><span class="exp-skill">GTM Strategy</span>
+            <span class="exp-skill">Integrated Marketing</span><span class="exp-skill">Budget Management</span>
+            <span class="exp-skill">Market Research</span><span class="exp-skill">Campaign Management</span>
+          </div>
+        </div>
+        <div class="exp-date">Sep 2022 – Feb 2026</div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">Freelance Content & Marketing Strategist</div>
+          <div class="exp-company">Peiramax Ltd · Remote</div>
+          <ul class="exp-bullets">
+            <li>Content strategy and social media frameworks for consumer brands including LaRivera Wine and Fressia Soap</li>
+            <li>Audience segmentation and new distribution channel strategies to drive brand reach</li>
+            <li>Performance reporting and optimisation insights across multiple client accounts</li>
+          </ul>
+          <div class="exp-skills">
+            <span class="exp-skill">Content Strategy</span><span class="exp-skill">Social Media</span>
+            <span class="exp-skill">Copywriting</span><span class="exp-skill">Performance Analytics</span>
+          </div>
+        </div>
+        <div class="exp-date">Feb 2021 – Aug 2022</div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">Media Strategist & Planner</div>
+          <div class="exp-company">Media Perspectives Ltd · Nigeria</div>
+          <ul class="exp-bullets">
+            <li>Part of the team behind the Visa ExpressPay Ghana launch — 40K+ installs and 3K+ transactions in Month 1</li>
+            <li>Supported the Visa Nigeria SME Hub — team effort that onboarded 10,000+ local businesses</li>
+            <li>Contributed to pitches that brought Samsung Consumer Electronics and TGI Group into the agency</li>
+            <li>Integrated campaigns across Africa for VISA, Samsung, Novartis · tools: GA, Meltwater, Sprinklr</li>
+          </ul>
+          <div class="exp-skills">
+            <span class="exp-skill">Media Planning</span><span class="exp-skill">Client Management</span>
+            <span class="exp-skill">Digital Strategy</span><span class="exp-skill">Analytics</span>
+            <span class="exp-skill">Influencer Marketing</span><span class="exp-skill">Cross-market Campaigns</span>
+          </div>
+        </div>
+        <div class="exp-date">Feb 2018 – Mar 2021</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">Skills</p>
+    <h2 class="section-title">What I bring</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">PM Core ★ Top 5</div>
+        <div class="skill-list">
+          <div class="skill-item top">Product Management</div>
+          <div class="skill-item top">Product Strategy</div>
+          <div class="skill-item top">Go-to-Market Strategy</div>
+          <div class="skill-item top">User Research</div>
+          <div class="skill-item top">Agile Methodologies</div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">PM Frameworks</div>
+        <div class="skill-list">
+          <div class="skill-item">Product Discovery</div>
+          <div class="skill-item">MoSCoW Prioritisation</div>
+          <div class="skill-item">PRD Development</div>
+          <div class="skill-item">Roadmap Planning</div>
+          <div class="skill-item">Jobs-to-be-Done</div>
+          <div class="skill-item">User Story Mapping</div>
+          <div class="skill-item">MVP Definition</div>
+          <div class="skill-item">Competitor Analysis</div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Marketing & Growth</div>
+        <div class="skill-list">
+          <div class="skill-item">Brand Strategy</div>
+          <div class="skill-item">Integrated Marketing Comms</div>
+          <div class="skill-item">Content Strategy</div>
+          <div class="skill-item">Campaign Management</div>
+          <div class="skill-item">Consumer Insights</div>
+          <div class="skill-item">Market Research</div>
+          <div class="skill-item">Stakeholder Management</div>
+          <div class="skill-item">Cross-functional Collaboration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Let's Connect</p>
+    <h2 class="section-title">Open to the right<br>PM opportunities</h2>
+    <p class="section-sub">I'm actively building my PM career and open to roles in fintech, consumer apps, and growth. If you're building something for real users and want a PM who gets adoption, let's talk.</p>
+    <div class="contact-links">
+      <a href="https://bit.ly/3Vr95Fm" class="contact-link" target="_blank">LinkedIn →</a>
+      <a href="mailto:teeoluofficial@gmail.com" class="contact-link">teeoluofficial@gmail.com</a>
+      <a href="tel:+2347062914079" class="contact-link">+234 706 291 4079</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Temitope Oludare · Product Manager · Lagos, Nigeria · 2026</p>
+</footer>
+
+</body>
+</html>
